@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Vulkan_SetUp\ExtensionsCheck.cpp" />
     <ClCompile Include="Vulkan_SetUp\Vulkan_SetUP.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -241,6 +242,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Dependency.h" />
+    <ClInclude Include="Vulkan_SetUp\ExtensionsCheck.h" />
     <ClInclude Include="Vulkan_SetUp\Vulkan_SetUP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
