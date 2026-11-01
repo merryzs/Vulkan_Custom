@@ -11,8 +11,8 @@ void Vulkan_SetUP::createInstance()
         .apiVersion = vk::ApiVersion14
     };
     
-    std::vector requiredExtensions = GetRequiredExtensions();
-    auto extensionProperties = context.enumerateInstanceExtensionProperties();
+    std::vector requiredExtensions = extensionsCheck->GetRequiredExtensions();
+    auto extensionProperties = parameter->context.enumerateInstanceExtensionProperties();
     
     for (uint32_t i = 0; i < requiredExtensions.size(); ++i)
     {
@@ -26,5 +26,14 @@ void Vulkan_SetUP::createInstance()
             throw std::runtime_error("Required GLFW extensions not supported : " +std::string(requiredExtensions[i]));
         }
     }
+    
+    vk::InstanceCreateInfo CreateInfo{
+        .pApplicationInfo = &appInfo,
+        .enabledLayerCount = static_cast<uint32_t>(requiredLayer.size()),
+        .ppEnabledLayersNames = requiredLayer.data(),
+        .enabledExtensionCount =  static_cast<uint32_t>(requiredExtensions.size()),
+        .ppEnabledExtensionNames = glfwExtensions
+    };
+    extensionsCheck->instance = vk::raii::Instance(parameter->context,CreateInfo);
 }
 

@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../Dependency.h"
+#include "vk_Parameter.h"
 #include "ExtensionsCheck.h"
 
 class Vulkan_SetUP
@@ -7,14 +7,15 @@ class Vulkan_SetUP
 public:
     void createInstance();
     
+    ExtensionsCheck* extensionsCheck = nullptr;
+    Parameter* parameter = nullptr;
+    
+    
     
 private : 
     
-    vk::raii::Context context;
-    vk::raii::Instance instance;
+
     
-    
-    static std::vector<char const *> GetRequiredExtensions();
     
     
 };

@@ -33,7 +33,7 @@ void Application::initwindow()
 
 void Application::initVulkan()
 {
-    //vkSetUp = new Vulkan_SetUP();
+    vkSetUp = new Vulkan_SetUP();
     //vkSetUp->window = window;
     vkSetUp->createInstance();
 }
