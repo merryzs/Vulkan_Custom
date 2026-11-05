@@ -3,8 +3,9 @@
 
 class Parameter
 {
-public: 
-    vk::raii::Context* context = nullptr;
-    
+public:
+    vk::raii::Instance instance = nullptr;
+    vk::raii::Context context;
+
     
 };

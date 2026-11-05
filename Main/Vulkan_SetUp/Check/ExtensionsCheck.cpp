@@ -1,12 +1,13 @@
 ﻿#include "ExtensionsCheck.h"
 
 
+
 void ExtensionsCheck::RequiredExtensions()
 {
     parameter = new Parameter();
-    
+
     std::vector requiredExtensions = GetRequiredExtensions();
-    auto extensionProperties = parameter->context->enumerateInstanceExtensionProperties();
+    auto extensionProperties = parameter->context.enumerateInstanceExtensionProperties();
     
     for (uint32_t i = 0; i < requiredExtensions.size(); ++i)
     {

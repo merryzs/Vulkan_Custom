@@ -6,10 +6,13 @@ class ExtensionsCheck
 {
 public:
     
-    vk::raii::Instance instance;
 
+    
     void RequiredExtensions();
+    std::vector<const char* > requiredExtensions;
     static std::vector<char const *> GetRequiredExtensions();
 private : 
+    
+    
     Parameter* parameter = nullptr;
 };

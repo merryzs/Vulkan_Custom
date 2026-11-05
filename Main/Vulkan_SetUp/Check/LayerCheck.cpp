@@ -9,13 +9,12 @@ constexpr bool enablevalidationLayers = true;
 void LayerCheck::ValidateLayers()
 {
     parameter = new Parameter();
-    
     if (enablevalidationLayers)
     {
         requiredLayers.assign_range(ValidationLayers);
     }
     
-    auto layerProperties = parameter->context->enumerateInstanceLayerProperties();
+    auto layerProperties = parameter->context.enumerateInstanceLayerProperties();
     auto unsupportedLayer = std::ranges::find_if(requiredLayers, [&layerProperties](auto const &requiredLayers )
     {
         return std::ranges::none_of(layerProperties, [requiredLayers] (auto const &LayerProperty)

@@ -2,6 +2,9 @@
 
 void Vulkan_SetUP::createInstance()
 {
+    layer = new LayerCheck();
+    extensions = new ExtensionsCheck();
+    
     constexpr vk::ApplicationInfo appInfo 
     {
         .pApplicationName = "Moteur?",
@@ -11,17 +14,22 @@ void Vulkan_SetUP::createInstance()
         .apiVersion = vk::ApiVersion14
     };
     
-   
+   extensions->RequiredExtensions();
+    layer->ValidateLayers();
     
 
     
     vk::InstanceCreateInfo CreateInfo{
         .pApplicationInfo = &appInfo,
-        .enabledLayerCount = static_cast<uint32_t>(requiredLayer.size()),
-        .ppEnabledLayersNames = requiredLayer.data(),
-        .enabledExtensionCount =  static_cast<uint32_t>(requiredExtensions.size()),
-        .ppEnabledExtensionNames = glfwExtensions
+        .enabledLayerCount = static_cast<uint32_t>(layer->requiredLayers.size()),
+        .ppEnabledLayerNames = layer->requiredLayers.data(),
+        .enabledExtensionCount =  static_cast<uint32_t>(extensions->requiredExtensions.size()),
+        .ppEnabledExtensionNames = extensions->requiredExtensions.data()
     };
-    extensions_check->instance = vk::raii::Instance(parameter->context,CreateInfo);
+    parameter->instance = vk::raii::Instance(parameter->context, CreateInfo);
+    
+    
+    debugmessage->SetUpDebugmessenger();
+    
 }
 
