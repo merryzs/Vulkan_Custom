@@ -4,7 +4,7 @@
 class Parameter
 {
 public: 
-    vk::raii::Context context;
+    vk::raii::Context* context = nullptr;
     
     
 };
